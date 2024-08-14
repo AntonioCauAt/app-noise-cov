@@ -30,6 +30,10 @@ print(noise_cov['method'])
 
 # == SAVE RESULTS ==
 
+# SAVE COVARIANCE MATRIX: Guarda la matriz de covarianza en un archivo .fif
+cov_fname = os.path.join('out_dir', 'cov.fif')
+mne.write_cov(cov_fname, noise_cov)
+
 # SAVE FIGURE: Create and save a fig of the covariance matrix
 fig = mne.viz.plot_cov(noise_cov, epo.info)
 fig_fname = os.path.join('out__figs', 'noise_cov.png')
@@ -41,8 +45,6 @@ report.add_figs_to_section(fig, 'Noise Covariance', section='Covariance')
 report_path = os.path.join('out__dir_report', 'report.html')
 report.save(report_path, overwrite=True)
 
-# Guardar los datos evocados
-#evoked_fname = os.path.join('out__dir', 'evoked-ave.fif')
-#evoked.save(evoked_fname)
+
 
 
