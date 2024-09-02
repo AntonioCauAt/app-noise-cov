@@ -15,14 +15,14 @@ __location__ = os.path.realpath(
 with open(__location__+'/config.json') as config_json:
     config = json.load(config_json)
 
-# Read the epochs file: Lee el archivo de epochs usando mne
+# Read the epochs file
 epochs_fname = config.pop('fname') 
 epo = mne.read_epochs(epochs_fname)  
 
 # Configuration depending on what we want
 epo.pick_types(meg=True, eeg=False)
 
-# Compute noise covariance matrix: Calcula la matriz de covarianza de ruido
+# Compute noise covariance matrix
 noise_cov = mne.compute_covariance(epo, tmax=0.,
                                    method=['shrunk', 'empirical'],
                                    rank='info')
@@ -30,7 +30,7 @@ print(noise_cov['method'])
 
 # == SAVE RESULTS ==
 
-# SAVE COVARIANCE MATRIX: Guarda la matriz de covarianza en un archivo .fif
+# SAVE COVARIANCE MATRIX: Save as .fif
 cov_fname = os.path.join('out_dir', 'cov.fif')
 mne.write_cov(cov_fname, noise_cov)
 
