@@ -1,8 +1,16 @@
-# set up environment
-import os
-import json
+# Evoked is a datatype that contains the result of averaging an Epochs structure based on several criteria.
 import mne
+import json
+import os
+import os.path as op
+import matplotlib.pyplot as plt
+from pathlib import Path
+import tempfile
 import numpy as np
+import matplotlib.pyplot as plt
+import sys
+
+#workaround for -- _tkinter.TclError: invalid command name ".!canvas"
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -11,8 +19,8 @@ import matplotlib.pyplot as plt
 __location__ = os.path.realpath(
     os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
-# Populate mne_config.py file with brainlife config.json
-with open(__location__+'/config.json') as config_json:
+# Load inputs from config.json
+with open('config.json') as config_json:
     config = json.load(config_json)
 
 # Read the epochs file
