@@ -20,19 +20,19 @@ with open('config.json') as config_json:
 
 
 # == CONFIG PARAMETERS ==
-fname_epochs = config['epochs']
+fname = config['epo']
 
 
 
 
 # Read the epochs file
-epo = mne.read_epochs(fname_epochs)  
+epochs = mne.read_epochs(fname)
 
 # Configuration depending on what we want
-epo.pick_types(meg=True, eeg=False)
+epochs.pick_types(meg=True, eeg=False)
 
 # Compute noise covariance matrix
-noise_cov = mne.compute_covariance(epo, tmax=0.,
+noise_cov = mne.compute_covariance(epochs, tmax=0.,
                                    method=['shrunk', 'empirical'],
                                    rank='info')
 print(noise_cov['method'])
