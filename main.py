@@ -23,9 +23,15 @@ __location__ = os.path.realpath(
 with open('config.json') as config_json:
     config = json.load(config_json)
 
+
+# == CONFIG PARAMETERS ==
+fname_epochs    = config['epo']
+
+
+
+
 # Read the epochs file
-epochs_fname = config.pop('fname') 
-epo = mne.read_epochs(epochs_fname)  
+epo = mne.read_epochs(fname_epochs)  
 
 # Configuration depending on what we want
 epo.pick_types(meg=True, eeg=False)
