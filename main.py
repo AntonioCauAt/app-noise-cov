@@ -51,7 +51,7 @@ fig.savefig(fig_fname)
 '''
 # SAVE REPORT: Create and save a report that includes the previous figure
 report = mne.Report(title='Report')
-report.add_figs_to_section(fig, 'Noise Covariance', section='Covariance')
+#report.add_figs_to_section(fig, 'Noise Covariance', section='Covariance')
 report_path = os.path.join('out_dir_report', 'report.html')
 report.save(report_path, overwrite=True)
 
