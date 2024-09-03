@@ -2,13 +2,8 @@
 import mne
 import json
 import os
-import os.path as op
-import matplotlib.pyplot as plt
-from pathlib import Path
-import tempfile
 import numpy as np
 import matplotlib.pyplot as plt
-import sys
 
 #workaround for -- _tkinter.TclError: invalid command name ".!canvas"
 import matplotlib
@@ -25,7 +20,7 @@ with open('config.json') as config_json:
 
 
 # == CONFIG PARAMETERS ==
-fname_epochs    = config['epo']
+fname_epochs = config['epochs']
 
 
 
